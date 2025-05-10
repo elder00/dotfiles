@@ -1,0 +1,8 @@
+sudo zypper in hyprland xdg-desktop-portal xdg-desktop-portal-hyprland kitty thunar thunar-font-manager mpv vlc opi obs qutebrowser firefox nvim gedit font-manager pipewire wireplumber qt5-wayland qt6-wayland nnn qt5ct qt6ct NetworkManager-connection-editor nwg-look
+sudo opi codecs
+
+
+mudar tema gedit
+export QT_QPA_PLATAFORMTHEME=qt5ct
+export QT_QPA_PLATAFORM=wayland
+export XDG_SESSION_TYPE=wayland
