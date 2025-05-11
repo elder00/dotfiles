@@ -1,5 +1,29 @@
-sudo zypper in hyprland xdg-desktop-portal xdg-desktop-portal-hyprland kitty thunar thunar-font-manager mpv vlc opi obs qutebrowser firefox nvim gedit font-manager pipewire wireplumber qt5-wayland qt6-wayland nnn qt5ct qt6ct NetworkManager-connection-editor nwg-look
-sudo opi codecs
+#!/bin/bash
+
+# Arquivo de configuração
+CONFIG_FILE="/etc/zypp/zypp.conf"
+
+# Descomenta a linha que define o número de conexões simultâneas
+sudo sed -i 's/^# *\(download\.max_concurrent_connections *= *5\)/\1/' "$CONFIG_FILE"
+
+# Da refresh nos repositórios
+sudo env ZYPP_CURL2=1 zypper ref
+
+# Distribution update
+sudo env ZYPP_PCK_PRELOAD=1 zypper dup
+
+# Removendo oq tem no display
+sudo rm /etc/systemd/system/display-manager.service
+
+# Instalando Pacotes
+sudo env ZYPP_PCK_PRELOAD=1 zypper -n in hyprland xdg-desktop-portal xdg-desktop-portal-hyprland hyprland-qt-support hyprpolkitagent xorg-x11-server sddm-qt6 hyprland-qtutils kitty thunar thunar-font-manager thunar-archive-plugin mpv vlc opi obs qutebrowser firefox nvim gedit font-manager pipewire wireplumber qt5-wayland qt6-wayland nnn qt5ct qt6ct NetworkManager-connection-editor nwg-look xdg-user-dirs xdg-user-dirs-gtk xdg-user-dirs-lang xdg-user-dirs-gtk-lang nwg-look nwg-displays
+sudo opi -n codecs
+
+# Arrumando sddm
+sudo systemctl enable sddm.service
+
+# Criando os diretórios padrões
+xdg-user-dirs-update
 
 
 mudar tema gedit
