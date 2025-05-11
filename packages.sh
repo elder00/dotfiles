@@ -35,6 +35,9 @@ xdg-user-dirs-update
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+cp .config ~/
+cp .local ~/
+
 #Arrumar os plugins com overview
 #Eww ou waybar
 #rofi provavelmente
